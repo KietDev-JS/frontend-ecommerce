@@ -17,9 +17,12 @@ const ProductCard: React.FC<ProductCardData> = ({ data }) => {
     event?.stopPropagation();
     cart.addItem(data);
   };
+  const onOpen = () => {
+    router.push(`/products/${data.id}`);
+  };
   return (
     <div
-      className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4 max-w-[300px]"
+      className="bg-white group w-[200px] border p-3 space-y-4 "
       onClick={() => router.push(`/products/${data.id}`)}
     >
       <div className="aspect-square rounded-xl bg-gray-100 relative">
@@ -32,7 +35,10 @@ const ProductCard: React.FC<ProductCardData> = ({ data }) => {
             >
               <ShoppingCart color="black" />
             </Button>
-            <Button className="rounded-full  flex items-center justify-center bg-white shadow border ">
+            <Button
+              className="rounded-full  flex items-center justify-center bg-white shadow border "
+              onClick={onOpen}
+            >
               <Menu color="black" />
             </Button>
           </div>

@@ -4,6 +4,8 @@ import "./globals.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import ToastProdvider from "@/providers/toast-provider";
+import Banner from "@/components/banner";
+import { cn } from "@/lib/utils";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -19,8 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={cn("min-h-screen", font.className)}>
         <ToastProdvider />
+        <Banner></Banner>
         <Navbar></Navbar>
 
         {children}
