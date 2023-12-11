@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar";
 import ToastProdvider from "@/providers/toast-provider";
 import Banner from "@/components/banner";
 import { cn } from "@/lib/utils";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -20,15 +21,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={cn("min-h-screen", font.className)}>
-        <ToastProdvider />
-        <Banner></Banner>
-        <Navbar></Navbar>
-
-        {children}
-        <Footer></Footer>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={cn("min-h-screen", font.className)}>
+          <ToastProdvider />
+          <Banner></Banner>
+          <Navbar></Navbar>
+          {children}
+          <Footer></Footer>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

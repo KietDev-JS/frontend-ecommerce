@@ -7,7 +7,7 @@ import Logo from "./logo";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ShoppingBag } from "lucide-react";
-export const revalidate = 0;
+import { UserButton, auth, useAuth } from "@clerk/nextjs";
 const Navbar = () => {
   return (
     <div className="border-b">
@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className="flex mx-[100px] justify-between w-full">
             <Logo />
             <div className="flex items-center ">
-              <Link href="/home">
+              <Link href="/">
                 <Button variant="ghost" className="text-md font-medium ">
                   Home
                 </Button>
@@ -39,11 +39,13 @@ const Navbar = () => {
               <Button variant="ghost" className="px-3 ">
                 Search
               </Button>
-              <Link href="/cart">
+              {/* <Link href="/cart">
                 <Button variant="ghost">
                   <ShoppingBag height="100%"></ShoppingBag>
                 </Button>
-              </Link>
+              </Link> */}
+              <NavbarActions />
+              <UserButton afterSignOutUrl="/" />
             </div>
           </div>
         </div>
