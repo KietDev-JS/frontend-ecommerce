@@ -1,18 +1,18 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import useCart from "@/hooks/use-cart";
 import { cn } from "@/lib/utils";
+import { auth } from "@clerk/nextjs";
 import axios from "axios";
 import { Poppins } from "next/font/google";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
-const Form = () => {
+const Form = (props: any) => {
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
   const searchParams = useSearchParams();
+  const userId = props;
   useEffect(() => {
     if (searchParams.get("success")) {
       toast.success("Payment successed");
@@ -31,6 +31,7 @@ const Form = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       {
         productIds: items.map((item) => item.id),
+        userId: userId.id,
       }
     );
     window.location = response.data.url;
