@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Mail, PhoneCall, PhoneIcon } from "lucide-react";
 import { Poppins } from "next/font/google";
 import { ProfileForm } from "./form";
+import { useAuth } from "@clerk/nextjs";
 
 const font = Poppins({
   weight: ["400"],
@@ -11,6 +12,7 @@ const font = Poppins({
 });
 
 const Body = () => {
+  const { userId } = useAuth();
   return (
     <div className={cn("h-full flex-col mx-[160px]", font.className)}>
       <p className="text-sm text-black/60  my-[50px]">
@@ -40,7 +42,7 @@ const Body = () => {
         </div>
 
         <div className=" w-[740px] shadow-lg p-2">
-          <ProfileForm></ProfileForm>
+          <ProfileForm id={userId}></ProfileForm>
         </div>
       </div>
     </div>
