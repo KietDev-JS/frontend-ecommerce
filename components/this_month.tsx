@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import SectionHeader from "./section_header";
 
-import getProducts from "@/actions/get-products";
 import ProductCard from "./ui/product-card";
 import { Product } from "@/type";
 

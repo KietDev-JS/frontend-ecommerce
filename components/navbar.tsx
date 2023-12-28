@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className="flex mx-[100px] justify-between w-full">
             <Logo />
             <div className="flex items-center ">
-              <Link href="/">
+              <Link href="/home">
                 <Button variant="ghost" className="text-md font-medium ">
                   Home
                 </Button>
@@ -29,6 +29,11 @@ const Navbar = () => {
               <Button variant="ghost" className="text-md font-medium">
                 About us
               </Button>
+              <Link href="/orders">
+                <Button variant="ghost" className="text-md font-medium">
+                  Orders
+                </Button>
+              </Link>
             </div>
             <div className="flex items-center space-x-2 h-70  ">
               <Input
@@ -45,6 +50,7 @@ const Navbar = () => {
                 </Button>
               </Link> */}
               <NavbarActions />
+
               <UserButton afterSignOutUrl="/" />
             </div>
           </div>
