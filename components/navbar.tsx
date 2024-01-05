@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ShoppingBag } from "lucide-react";
 import { UserButton, auth, useAuth } from "@clerk/nextjs";
+import { ComboboxDemo } from "./comboboxdemo";
 const Navbar = () => {
   return (
     <div className="border-b">
@@ -36,14 +37,12 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="flex items-center space-x-2 h-70  ">
-              <Input
+              {/* <Input
                 type="text"
                 className="px-3 w-80 active:border-none"
                 placeholder="Search for items..."
-              />
-              <Button variant="ghost" className="px-3 ">
-                Search
-              </Button>
+              /> */}
+              <ComboboxDemo />
               {/* <Link href="/cart">
                 <Button variant="ghost">
                   <ShoppingBag height="100%"></ShoppingBag>
