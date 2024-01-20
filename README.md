@@ -1,18 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a ecommerce web app, using NextJS14, Clerk for authentication and PrismaDB + PlannetScale for Database
+
 
 ## Getting Started
 
-First, run the development server:
+Order of command to run:
+1) Install packages : npm i
+2) Add .env variables as declared
+3) npm run dev, the order to run the project is to run admin -> buyer -> vendor
+4) access ports are 3000->3002
+5) to use payment webhook, remember to install stripe cli and listen for the api/webhook
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
