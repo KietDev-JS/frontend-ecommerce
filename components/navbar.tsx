@@ -8,15 +8,21 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ShoppingBag } from "lucide-react";
 import { UserButton, auth, useAuth } from "@clerk/nextjs";
-import { ComboboxDemo } from "./comboboxdemo";
-const Navbar = () => {
+import ComboboxDemo from "./comboboxdemo";
+import getProducts from "@/actions/get-products";
+
+const Navbar = async () => {
+  const products = await getProducts({
+    isFeatured: true,
+  });
+  const {userId} = auth();
   return (
     <div className="border-b">
       <Container>
         <div className=" bg-[#FFF] flex justify-between items-center py-[10px] border-b shadow-sm w-screen ">
           <div className="flex mx-[100px] justify-between w-full">
             <Logo />
-            <div className="flex items-center ">
+           {userId && <div className="flex items-center ">
               <Link href="/home">
                 <Button variant="ghost" className="text-md font-medium ">
                   Home
@@ -35,23 +41,15 @@ const Navbar = () => {
                   Orders
                 </Button>
               </Link>
-            </div>
-            <div className="flex items-center space-x-2 h-70  ">
-              {/* <Input
-                type="text"
-                className="px-3 w-80 active:border-none"
-                placeholder="Search for items..."
-              /> */}
-              <ComboboxDemo />
-              {/* <Link href="/cart">
-                <Button variant="ghost">
-                  <ShoppingBag height="100%"></ShoppingBag>
-                </Button>
-              </Link> */}
-              <NavbarActions />
+            </div>}
+            {userId && <div className="flex items-center space-x-2 h-70  ">
+      
+             <ComboboxDemo products={products}/>
+             
+             <NavbarActions />
 
               <UserButton afterSignOutUrl="/" />
-            </div>
+            </div>}
           </div>
         </div>
       </Container>

@@ -1,20 +1,13 @@
 import getBillboards from "@/actions/get-billboards";
 import getProducts from "@/actions/get-products";
-import Billboard from "@/components/billboard";
 import CategoryList from "@/components/category_list";
-import Navigation from "@/components/ads";
-import ProductList from "@/components/productlist";
 
 import Container from "@/components/ui/container";
-import Image from "next/image";
 import Ads from "@/components/ads";
-import { useRouter } from "next/navigation";
 import getCategories from "@/actions/get-categories";
-import { auth } from "@clerk/nextjs";
-import prismadb from "@/lib/prismadb";
 import FeaturedSection from "@/components/featured-section";
 import BestByCategories from "@/components/bestByCategories-section";
-import { getTwoProductsPerCategory } from "@/actions/get-by-category";
+import RecentlyAddedSection from "@/components/recentlyAdded-section";
 
 const Home = async () => {
   const products = await getProducts({
@@ -25,13 +18,17 @@ const Home = async () => {
   const categories = await getCategories();
   return (
     <Container>
-      <div className="flex-col - w-full">
-        <div className="flex items-start justify-between w-full mt-[60px] ">
+      <div className="flex-col w-full items-center">
+        <div className="flex w-full mt-[60px]  justify-center ">
           <CategoryList data={categories}></CategoryList>
           <Ads slide={billboards}></Ads>
         </div>
-        <FeaturedSection data={products} />
+        <hr  className="mt-10 mx-[100px]"/>
+         <FeaturedSection data={products} />
+         <hr  className="mt-10 mx-[100px]"/>
         <BestByCategories data={products} />
+        <hr  className="mt-10 mx-[100px]"/>
+        <RecentlyAddedSection data={products} /> 
       </div>
     </Container>
   );
